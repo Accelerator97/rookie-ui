@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "dist",
     "declaration": true,
     "baseUrl": ".",
     "module": "esnext",
@@ -24,7 +25,7 @@
     "noUnusedLocals": true
   },
   "include": [
-    "lib/**/*"
+    "lib/*"
   ],
   "exclude": [
     "node_modules",
@@ -36,5 +37,5 @@
     "jest",
     "src/setupTests.ts",
     "*.js"
-  ]
+  ],
 }
