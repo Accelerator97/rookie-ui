@@ -2,12 +2,12 @@
   "name": "react-ui",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/lib/index",
+  "types": "dist/lib/index",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server",
-    "build": "webpack --mode production",
-    "start": "webpack-dev-server --inline"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
@@ -21,18 +21,26 @@
   },
   "homepage": "https://github.com/Accelerator97/rookie-ui#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "@types/jest": "^24.0.9",
     "@types/react": "^16.8.7",
     "@types/react-dom": "^16.8.2",
-    "@webpack-cli/serve": "^1.6.0",
+    "@types/react-test-renderer": "^16.8.1",
     "awesome-typescript-loader": "^5.2.1",
-    "typescript": "^4.4.3",
-    "webpack": "4.29.6",
-    "webpack-cli": "3.2.3",
+    "babel-jest": "^24.3.1",
+    "cross-env": "^7.0.3",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.3.1",
+    "react-test-renderer": "^16.8.4",
+    "ts-jest": "^24.0.0",
+    "typescript": "^3.3.3333",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "html-webpack-plugin": "3.2.0",
-    "react": "16.8.4",
-    "react-dom": "16.8.4"
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
   }
 }
