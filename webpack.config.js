@@ -1,5 +1,5 @@
 const path = require('path')
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'development', // 设置mode
     entry: {
@@ -16,12 +16,17 @@ module.exports = {
     },
     module: {
         rules: [
-          {
-            test: /\.tsx?$/,
-            // use:['awesome-typescript-loader']
-            // 1.该 Loader 是把 TypeScript 转换成 JavaScript, 只负责新语法的转换，新增的API不会自动添加polyfill
-            loader: 'awesome-typescript-loader'
-          }
+            {
+                test: /\.tsx?$/,
+                // use:['awesome-typescript-loader']
+                // 1.该 Loader 是把 TypeScript 转换成 JavaScript, 只负责新语法的转换，新增的API不会自动添加polyfill
+                loader: 'awesome-typescript-loader'
+            }
         ]
-      },
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: 'index.html'
+        })
+    ]
 }
