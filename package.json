@@ -1,0 +1,28 @@
+{
+  "name": "react-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Accelerator97/rookie-ui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Accelerator97/rookie-ui/issues"
+  },
+  "homepage": "https://github.com/Accelerator97/rookie-ui#readme",
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "typescript": "^4.4.3",
+    "webpack": "4.29.6",
+    "webpack-cli": "3.2.3"
+  }
+}
