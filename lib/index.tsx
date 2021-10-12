@@ -1,7 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Button from './button'
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import Icon from './icon/icon'
 
-ReactDOM.render(<Button></Button>,document.body)
-console.log(React)
-console.log(ReactDOM)
+const root = document.querySelector('#root')
+ReactDOM.render(
+    <div><Icon name="wechat" /></div>, root)
