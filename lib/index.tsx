@@ -4,4 +4,4 @@ import Icon from './icon/icon'
 
 const root = document.querySelector('#root')
 ReactDOM.render(
-    <div><Icon name="wechat" /></div>, root)
+    <div><Icon name="Alipay" /></div>, root)
