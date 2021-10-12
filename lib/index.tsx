@@ -1,13 +1,13 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import Icon from './components/icon/icon'
+import Button,{ButtonType,ButtonSize} from './components/Button/button'
+import './styles/index.scss'
 
 
 const root = document.querySelector('#root')
 ReactDOM.render(
     <div>
-        <Icon name="Alipay" 
-        className='hi'
-        onClick={()=>console.log('click')} 
-        onMouseEnter={()=>console.log('enter')} />
+      <Button disabled>hello</Button>
+      <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>hello</Button>
+      <Button btnType={ButtonType.Link} href="http://www.baidu.com" disabled>hello</Button>
     </div>, root)

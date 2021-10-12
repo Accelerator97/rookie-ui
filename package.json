@@ -41,6 +41,8 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "@types/classnames": "^2.3.1",
+    "classnames": "^2.3.1",
     "css-loader": "2.1.1",
     "node-sass": "npm:dart-sass",
     "react": "^16.8.4",
