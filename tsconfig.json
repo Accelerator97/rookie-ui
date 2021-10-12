@@ -6,8 +6,13 @@
     "module": "esnext",
     "target": "es5",
     "lib": [
-      "es6",
-      "dom"
+      "DOM",
+      "ES6",
+      "DOM.Iterable",
+      "ScriptHost",
+      "ES2015",
+      "ES2015.Promise",
+      "ES2015.Generator"
     ],
     "sourceMap": true,
     "jsx": "react",
