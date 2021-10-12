@@ -33,14 +33,13 @@ const Button: React.FC<ButtonProps> = (props) => {
     })
     if (btnType === ButtonType.Link && href) {
         return (
-            <a className={classes} href={href}>{children}</a>
+            <a className={classes} href={href} {...restprops}>{children}</a>
         )
     } else {
         return (
-            <button className={classes} disabled={disabled}>{children}</button>
+            <button className={classes} disabled={disabled} {...restprops}>{children}</button>
         )
     }
-
 }
 Button.defaultProps={
     disabled:false,
