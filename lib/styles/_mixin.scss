@@ -20,11 +20,8 @@
     background: $hover-background;
     border-color: $hover-border;    
   }
-  &:focus,
-  &.focus {
-    color: $hover-color;
-    background: $hover-background;
-    border-color: $hover-border;    
+  &:focus{
+    border-color: none;
   }
   &:disabled,
   &.disabled {
