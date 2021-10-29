@@ -14,22 +14,12 @@ export interface MenuProps {
 
 interface IMenuContext {
     index:number;
-    onSelect?:SelectCallback
+    onSelect?:SelectCallback,
+    mode?:MenuMode
 }
 export const MenuContext = createContext<IMenuContext>({index:0}) //传给子组件
 
-const renderChildren = (children: any) => {
-    return React.Children.map(children,(child,index)=>{
-        const childElement = child as FunctionComponentElement<MenuItemProps> //获取函数组件实例
-        const {displayName} = childElement.type
-        if(displayName === 'MenuItem'){
-            return React.cloneElement(childElement,{index})
-        }else{
-            console.error('Warning:Menu has a child which is not a MenuItem component')
-            return 
-        }
-    })
-}
+
 const Menu:React.FC<MenuProps> = (props) =>{
     const {className,mode,style,children,defaultIndex,onSelect} = props
     const [currentActive,setActive] = useState(defaultIndex)
@@ -43,15 +33,28 @@ const Menu:React.FC<MenuProps> = (props) =>{
             onSelect(index)
         }
     }
+    const renderChildren = () => {
+        return React.Children.map(children,(child,index)=>{
+            const childElement = child as FunctionComponentElement<MenuItemProps> //获取函数组件实例
+            const {displayName} = childElement.type
+            if(displayName === 'MenuItem' || displayName === 'SubMenu'){
+                return React.cloneElement(childElement,{index})
+            }else{
+                console.error('Warning:Menu has a child which is not a MenuItem component')
+                return 
+            }
+        })
+    }
     const passedContext:IMenuContext= {
         index:currentActive? currentActive :0,
-        onSelect:handleClick
+        onSelect:handleClick,
+        mode:mode
     }
     return (
         <ul className={classes} style={style} data-testid="test-menu">
             <MenuContext.Provider value = {passedContext}>
-            {renderChildren(children)}
-            </MenuContext.Provider>
+            {renderChildren()}
+            </MenuContext.Provider> 
         </ul>
     )
 }
