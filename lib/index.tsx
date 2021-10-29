@@ -8,16 +8,16 @@ import './styles/index.scss'
 
 const root = document.querySelector('#root')
 ReactDOM.render(
-    <div>
-      <Menu defaultIndex={0} onSelect={(index=>alert(index))}>
-        <MenuItem index={0}>hi</MenuItem>
-        <MenuItem index={1} disabled>hi</MenuItem>
-        <MenuItem index={2}>hi</MenuItem>
-        <MenuItem index={3}>hi</MenuItem>
-        <SubMenu title="dropdown">
-          <MenuItem>dropdown1</MenuItem>
-          <MenuItem>dropdown2</MenuItem>
-          <MenuItem>dropdown3</MenuItem>
-        </SubMenu>
-      </Menu>
-    </div>, root)
+  <div>
+    <Menu onSelect={(index => alert(index))}>
+      <MenuItem>hi</MenuItem>
+      <MenuItem disabled>hi</MenuItem>
+      <MenuItem>hi</MenuItem>
+      <MenuItem>hi</MenuItem>
+      <SubMenu title="dropdown">
+        <MenuItem>dropdown1</MenuItem>
+        <MenuItem>dropdown2</MenuItem>
+        <MenuItem>dropdown3</MenuItem>
+      </SubMenu>
+    </Menu>
+  </div>, root)
