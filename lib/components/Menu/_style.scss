@@ -1,4 +1,4 @@
-.viking-menu{
+.rookie-menu{
     display: flex;
     flex-wrap: wrap;
     padding-left: 0;
@@ -36,5 +36,21 @@
             border-bottom: 0px;
             border-left: $menu-item-active-border-width solid $menu-item-active-color;
         }
+    }
+}
+
+.submenu-item {
+    position: relative;
+}
+.rookie-submenu {
+    list-style: none;
+    padding-left: 0;
+    white-space: nowrap;
+    .menu-item{
+        padding: $menu-item-padding-y $menu-item-padding-x;
+        cursor: pointer;
+        transition: $menu-transition;
+        color: $body-color;
+
     }
 }
