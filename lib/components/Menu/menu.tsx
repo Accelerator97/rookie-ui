@@ -16,7 +16,7 @@ interface IMenuContext {
     index:number;
     onSelect?:SelectCallback
 }
-export const MenuContext = createContext<IMenuContext>({index:0})
+export const MenuContext = createContext<IMenuContext>({index:0}) //传给子组件
 
 const renderChildren = (children: any) => {
     return React.Children.map(children,(child,index)=>{

@@ -21,8 +21,33 @@
         &.is-active,&:hover {
             color:$menu-item-active-color;
             border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
-
         }
+    }
+    .submenu-item {
+        position: relative;
+        .submenu-title {
+          display: flex;
+          align-items: center;
+        }
+    }
+    .rookie-submenu {
+        display: none;
+        list-style:none;
+        padding-left: 0;
+        white-space: nowrap;
+        transition: $menu-transition;
+        .menu-item {
+          padding: $menu-item-padding-y $menu-item-padding-x;
+          cursor: pointer;
+          transition: $menu-transition;
+          color: $body-color;
+          &.is-active, &:hover {
+            color: $menu-item-active-color !important;
+          }
+        }
+    }
+    .viking-submenu.menu-opened {
+        display: block;
     }
 }
 
@@ -39,18 +64,17 @@
     }
 }
 
-.submenu-item {
-    position: relative;
-}
-.rookie-submenu {
-    list-style: none;
-    padding-left: 0;
-    white-space: nowrap;
-    .menu-item{
-        padding: $menu-item-padding-y $menu-item-padding-x;
-        cursor: pointer;
-        transition: $menu-transition;
-        color: $body-color;
-
+.menu-horizontal {
+    >.menu-item {
+      border-bottom: $menu-item-active-border-width solid transparent;
     }
-}
+    .rookie-submenu {
+      position: absolute;
+      background: $white;
+      z-index: 100;
+      top: calc(100% + 8px);
+      left: 0;
+      border: $menu-border-width solid $menu-border-color;
+      box-shadow: $submenu-box-shadow;
+    }
+  }
