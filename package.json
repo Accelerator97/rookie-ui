@@ -53,7 +53,9 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "@types/react-transition-group": "^4.4.4",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "react-transition-group": "^4.4.2"
   }
 }
