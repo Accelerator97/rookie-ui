@@ -9,7 +9,7 @@ import './styles/index.scss'
 const root = document.querySelector('#root')
 ReactDOM.render(
   <div>
-    <Menu onSelect={(index => alert(index))} mode={'vertical'} defaultOpenSubMenus={['4']}>
+    <Menu onSelect={(index => alert(index))}  mode={'vertical'} defaultOpenSubMenus={['4']}>
       <MenuItem>hi</MenuItem>
       <MenuItem disabled>hi</MenuItem>
       <MenuItem>hi</MenuItem>

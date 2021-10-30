@@ -28,6 +28,27 @@
         .submenu-title {
           display: flex;
           align-items: center;
+          .arrow-icon{
+            position: relative; //实现图标与文字对齐
+            top: 0.1em;//实现图标与文字对齐
+            margin-left: 3px;
+            transition: transform .25s ease-in-out;
+          }
+        }
+        &:hover{
+            .arrow-icon{
+                transform: rotate(180deg);
+            }
+        }
+    }
+    .is-vertical{
+        .arrow-icon{
+            transform: rotate(0deg)!important;
+        }
+    }
+    .is-vertical.is-opened{
+        .arrow-icon{
+            transform: rotate(180deg)!important;
         }
     }
     .rookie-submenu {
