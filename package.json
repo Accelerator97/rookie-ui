@@ -7,7 +7,9 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --config=jest.config.js --runInBand",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js"
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "storybook": "start-storybook",
+    "build-storybook": "build-storybook -s public"
   },
   "repository": {
     "type": "git",
@@ -26,12 +28,18 @@
     "@babel/preset-react": "^7.0.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-info": "^5.2.8",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/react": "^5.2.8",
     "@types/classnames": "^2.3.1",
     "@types/jest": "^24.0.9",
     "@types/react": "^16.8.7",
     "@types/react-dom": "^16.8.2",
     "@types/react-test-renderer": "^16.8.1",
     "@types/testing-library__dom": "7.0.1",
+    "@types/storybook__addon-info": "^5.2.1",
     "awesome-typescript-loader": "^5.2.1",
     "babel-jest": "^27.3.1",
     "classnames": "^2.3.1",
