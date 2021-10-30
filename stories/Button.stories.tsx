@@ -22,6 +22,6 @@ const buttonWithType = ()=>(
 )
 
 storiesOf('Button Component',module)
-  .add('默认Button',defaultButton)
+  .add('Button',defaultButton)
   .add('不同大小的Button',buttonWithSize)
   .add('不同类型的Button',buttonWithType)
