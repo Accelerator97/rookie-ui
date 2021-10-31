@@ -16,8 +16,8 @@ type NatvieButtonProps = ButtonHTMLAttributes<HTMLElement> & BaseButtonProps
 type AnchorButtonProps = AnchorHTMLAttributes<HTMLElement> & BaseButtonProps
 export type ButtonProps = Partial<NatvieButtonProps & AnchorButtonProps>
 /**
- * ## 引用方式
  * ~~~js
+ * //引用方式
  * import {Button} from 'rookie-ui'
  * ~~~
  */

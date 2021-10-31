@@ -2,7 +2,7 @@ import { withInfo } from '@storybook/addon-info';
 import { configure ,addDecorator,addParameters} from '@storybook/react';
 import React from 'react'
 import '../lib/styles/index.scss'
-
+  
 const wrapperStyle:React.CSSProperties = {
   padding:'20px 40px',
 }
