@@ -1,28 +1,27 @@
-import React, { createContext,FunctionComponentElement,useState } from 'react'
+import React, { createContext,FunctionComponentElement,useState,FC } from 'react'
 import classNames from 'classnames'
 import {MenuItemProps} from './menuItem'
 
 type MenuMode = 'horizontal' | 'vertical'
-type SelectCallback = (selectedIndex:string) => void
 export interface MenuProps {
     defaultIndex?: string;
     className?: string;
     mode?:MenuMode;
     style?:React.CSSProperties;
-    onSelect?:SelectCallback,
+    onSelect?:(selectedIndex:string) => void,
     defaultOpenSubMenus?:string[]
 }
 
 interface IMenuContext {
     index:string;
-    onSelect?:SelectCallback,
+    onSelect?:(selectedIndex:string) => void,
     mode?:MenuMode,
     defaultOpenSubMenus?:string[]
 }
 export const MenuContext = createContext<IMenuContext>({index:'0'}) //传给子组件
 
 
-const Menu:React.FC<MenuProps> = (props) =>{
+export const Menu:FC<MenuProps> = (props) =>{
     const {className,mode,style,children,defaultIndex,onSelect,defaultOpenSubMenus} = props
     const [currentActive,setActive] = useState(defaultIndex)
     const classes = classNames('rookie-menu',className,{
@@ -55,7 +54,7 @@ const Menu:React.FC<MenuProps> = (props) =>{
     }
     return (
         <ul className={classes} style={style} data-testid="test-menu">
-            <MenuContext.Provider value = {passedContext}>
+            <MenuContext.Provider value = {passedContext} >
             {renderChildren()}
             </MenuContext.Provider> 
         </ul>
@@ -68,4 +67,4 @@ Menu.defaultProps = {
     defaultOpenSubMenus:[]
 }
 
-export default Menu
+export default Menu;

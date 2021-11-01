@@ -5,7 +5,7 @@ import Menu from '../lib/components/Menu/menu'
 import MenuItem from '../lib/components/Menu/menuItem'
 import SubMenu from '../lib/components/Menu/subMenu'
 
-export const defaultMenu = () => (
+const defaultMenu = () => (
   <Menu defaultIndex='0' onSelect={(index) => { action(`clicked ${index} item`) }} >
     <MenuItem>
       cool link
@@ -24,7 +24,7 @@ export const defaultMenu = () => (
   </Menu>
 )
 
-export const VerticalMenu = () => (
+const VerticalMenu = () => (
   <Menu defaultIndex='0' mode={'vertical'} onSelect={(index) => { action(`clicked ${index} item`) }} >
     <MenuItem>
       cool link

@@ -1,4 +1,4 @@
-import React,{useContext,FC,FunctionComponentElement,useState } from 'react'
+import React,{useContext,FC,FunctionComponentElement,useState,cloneElement } from 'react'
 import classNames from 'classnames'
 import {MenuContext} from './menu'
 import { MenuItemProps } from './menuItem'
@@ -52,7 +52,7 @@ export const SubMenu:FC<SubMenuProps> = ({index,title,children,className}) => {
             const childElement = child as FunctionComponentElement<MenuItemProps>
             const {displayName} = childElement.type
             if(displayName === 'MenuItem'){
-                return React.cloneElement(childElement,{
+                return cloneElement(childElement,{
                     index:`${index}-${i}`
                 })
             }else{
