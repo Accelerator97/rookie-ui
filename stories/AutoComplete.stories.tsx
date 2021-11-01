@@ -23,7 +23,7 @@ const SimpleComplete = () =>{
     {value: 'kuzma', number: 0},
   ]
 //   const handleFetch = (query: string) => {
-//     return lakersWithNumber.filter(player => player.value.includes(query))
+//     return lakersWithNumber.filter(player => player.value.includes(query)).map(name => ({value: name}))
 //   }
   const renderOption = (item:DataSourceType<LakerPlayerProps>) =>{
       return (

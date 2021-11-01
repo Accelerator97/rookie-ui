@@ -29,7 +29,7 @@ export const AutoComplete:FC<AutoCompleteProps> =(props) =>{
     }
     //自定义渲染模版
     const renderTemplate = (item:DataSourceType) =>{
-        return renderOptions?renderOptions(item) :item
+        return renderOptions?renderOptions(item) :item.value
     }
     //点击下拉菜单，把内容填充到输入框，然后下拉菜单消失，触发props的onSelect方法
     const handleSelect = (item:DataSourceType) =>{
