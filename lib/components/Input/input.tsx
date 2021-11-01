@@ -1,4 +1,4 @@
-import React, { ReactElement, InputHTMLAttributes, FC } from 'react'
+import React, { InputHTMLAttributes, FC } from 'react'
 import classNames from 'classnames'
 import Icon from '../Icon/icon'
 import { ChangeEvent } from 'react-syntax-highlighter/node_modules/@types/react'

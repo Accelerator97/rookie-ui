@@ -7,5 +7,5 @@ import './styles/index.scss'
 const root = document.querySelector('#root')
 ReactDOM.render(
   <div>
-    <Input  size="sm" append='你好'/>
+   <Input placeholder="sizes" size="lg" />
   </div>, root)
