@@ -5,13 +5,11 @@ import { Input } from '../lib/components/Input/input'
 
 
 const defaultInput = () => (
-  <>
   <Input
     style={{width: '300px'}}
     placeholder="placeholder"
     onChange={action('changed')}
   />
-  </>
 )
 const disabledInput = () => (
   <Input
@@ -30,7 +28,7 @@ const iconInput = () => (
 )
 
 const sizeInput = () => (
-  <>
+  <div>
     <Input
       style={{width: '300px'}}
       defaultValue="large size"
@@ -41,11 +39,11 @@ const sizeInput = () => (
       placeholder="small size"
       size="sm"
     />
-  </>
+  </div>
 )
 
 const pandInput = () => (
-  <>
+  <div>
     <Input
       style={{width: '300px'}}
       defaultValue="prepend text"
@@ -56,8 +54,7 @@ const pandInput = () => (
       defaultValue="google"
       append=".com"
     />
-    
-  </>
+  </div>
 )
 
 

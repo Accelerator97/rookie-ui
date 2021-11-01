@@ -8,17 +8,17 @@ const defaultButton = ()=> (
 )
 
 const buttonWithSize = ()=>(
-    <>
+    <div>
     <Button size="lg">large Button</Button>
     <Button size="sm">small Button</Button>
-    </>
+    </div>
 )
 const buttonWithType = ()=>(
-    <>
+    <div>
     <Button btnType="primary">primary Button</Button>
     <Button btnType="danger">danger Button</Button>
     <Button btnType="link" href="https://www.baidu.com">link Button</Button>
-    </>
+    </div>
 )
 
 storiesOf('Button Component',module)
