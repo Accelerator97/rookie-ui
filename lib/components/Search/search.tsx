@@ -11,14 +11,23 @@ interface DataSourceObject {
 //合并用户输入的数据类型
 export type DataSourceType<T = {}> = T & DataSourceObject
 
-export interface AutoCompleteProps extends Omit<InputProps, 'onSelect'> {
-    //用户可以自己定义，比如根据用户输入的值返回中返回符合的值  同步请求返回数组或者异步请求返回数组
+export interface SearchProps extends Omit<InputProps, 'onSelect'> {
+    /**自定义关键词展示下拉菜单，支持同步或者异步请求数据*/
     fetchSuggestion: (str: string) => DataSourceType[] | Promise<DataSourceType[]>;
-    onSelect?: (item: DataSourceType) => void, //选中之后执行的回调
+    /**选中值之后执行的回调函数*/
+    onSelect?: (item: DataSourceType) => void, 
+    /**自定义下拉菜单的样式 */
     renderOption?: (item: DataSourceType) => ReactElement //自定义展示模版
 }
-
-export const AutoComplete: FC<AutoCompleteProps> = (props) => {
+/**
+ * ~~~js
+ * //引用方式
+ * import {Search} from 'rookie-ui'
+ * 
+ * //搜索的数据应当是对象数组形式，且含有value属性
+ * ~~~
+ */
+export const Search: FC<SearchProps> = (props) => {
     const { fetchSuggestion, onSelect, value, renderOption, ...restProps } = props
     const [inputValue, setInputValue] = useState(value as string)//用户输入的值
     const [suggestions, setSuggestions] = useState<DataSourceType[]>([])//下拉菜单的内容，为数组
@@ -114,11 +123,11 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
         )
     }
     return (
-        <div className="rookie-auto-complete" ref={componentRef}>
+        <div className="rookie-auto-search" ref={componentRef}>
             <Input value={inputValue} {...restProps} onChange={handleChange} onKeyDown={handleKeyDown}></Input>
             {suggestions.length > 0 && generateDropDown()}
         </div>
     )
 }
 
-export default AutoComplete;
+export default Search;
