@@ -8,7 +8,9 @@ export interface MenuProps {
     className?: string;
     mode?:MenuMode;
     style?:React.CSSProperties;
+    /**点击菜单项触发的回调函数 */
     onSelect?:(selectedIndex:string) => void,
+    /**设置子菜单的默认打开 只在纵向模式下生效 */
     defaultOpenSubMenus?:string[]
 }
 
@@ -19,7 +21,12 @@ interface IMenuContext {
     defaultOpenSubMenus?:string[]
 }
 export const MenuContext = createContext<IMenuContext>({index:'0'}) //传给子组件
-
+/**
+ * ~~~js
+ * //引用方式
+ * import { Menu } from 'rookie-ui'
+ * ~~~
+ */
 
 export const Menu:FC<MenuProps> = (props) =>{
     const {className,mode,style,children,defaultIndex,onSelect,defaultOpenSubMenus} = props
