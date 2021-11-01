@@ -1,5 +1,6 @@
-import React,{FC,useState,ChangeEvent,ReactElement} from 'react'
+import React,{FC,useState,ChangeEvent,ReactElement,useEffect} from 'react'
 import Input,{InputProps} from '../Input/input'
+import useDebounce from '../../hooks/useDebounce'
 
 //自定义数据类型
 interface DataSourceObject {
@@ -17,13 +18,12 @@ export interface AutoCompleteProps extends Omit<InputProps,'onSelect'> {
 
 export const AutoComplete:FC<AutoCompleteProps> =(props) =>{
     const {fetchSuggestion,onSelect,value,renderOption,...restProps} = props
-    const [inputValue,setInputValue] = useState(value)//用户输入的值
+    const [inputValue,setInputValue] = useState(value as string)//用户输入的值
     const [suggestions,setSuggestions] = useState<DataSourceType[]>([])//下拉菜单的内容
-    const handleChange = (e:ChangeEvent<HTMLInputElement>)=>{
-        const value = e.target.value.trim() //拿到用户输入的值
-        setInputValue(value)
-        if(value) {
-            const results = fetchSuggestion(value)
+    const debouncedValue = useDebounce(inputValue,500) //函数防抖延迟更新
+    useEffect(()=>{ //只有debounceValue发生改变时才会调用函数
+        if(debouncedValue) {
+            const results = fetchSuggestion(debouncedValue)
             if(results instanceof Promise){ //如果result是一个promise对象
                 results.then(data => {
                     setSuggestions(data)
@@ -35,11 +35,15 @@ export const AutoComplete:FC<AutoCompleteProps> =(props) =>{
         }else{
             setSuggestions([])
         }
+    },[debouncedValue])
+    const handleChange = (e:ChangeEvent<HTMLInputElement>)=>{
+        const value = e.target.value.trim() //拿到用户输入的值，更新useState的inputValue
+        setInputValue(value) 
     }
     //自定义渲染模版
     const renderTemplate = (item: DataSourceType) => {
         return renderOption ? renderOption(item) : item.value
-      }
+    }
     //点击下拉菜单，把内容填充到输入框，然后下拉菜单消失，触发props的onSelect方法
     const handleSelect = (item:DataSourceType) =>{
         setInputValue(item.value)

@@ -3,10 +3,10 @@ import {storiesOf} from '@storybook/react'
 import {action} from '@storybook/addon-actions'
 import AutoComplete,{DataSourceType} from '../lib/components/AutoComplete/autoComplete'
 
-interface LakerPlayerProps {
-    value: string;
-    number: number;
-}
+// interface LakerPlayerProps {
+//     value: string;
+//     number: number;
+// }
 interface GithubUserProps {
     login: string;
     url: string;
@@ -27,14 +27,12 @@ const SimpleComplete = () =>{
     {value: 'howard', number: 39},
     {value: 'kuzma', number: 0},
   ]
-//   const handleFetch = (query: string) => {
-//     return lakersWithNumber.filter(player => player.value.includes(query)).map(name => ({value: name}))
-//   }
-  const renderOption = (item:DataSourceType<GithubUserProps>) =>{
+  const renderOption = (item:DataSourceType) =>{
+    const itemWithGithub = item as DataSourceType<GithubUserProps>
       return (
           <>
-          <h2>Name:{item.value}</h2>
-          <p>Number:{item.url}</p>
+          <h2>Name:{itemWithGithub.value}</h2>
+          <p>Number:{itemWithGithub.url}</p>
           </>
       )
   }
