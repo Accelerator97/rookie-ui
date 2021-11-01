@@ -4,14 +4,13 @@ import Icon from '../Icon/icon'
 import { ChangeEvent } from 'react-syntax-highlighter/node_modules/@types/react'
 
 type InputSize = 'lg' | 'sm'
-
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size'> {
     disabled?: boolean;
     size?: InputSize;
     icon?: string
     prepend?: string ; //前缀
     append?: string ;//后缀
-    onChange?:(e:ChangeEvent<HTMLElement>) => void
+    onChange? : (e: ChangeEvent<HTMLInputElement>) => void;
 }
 /**
  * ~~~js
