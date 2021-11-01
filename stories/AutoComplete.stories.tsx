@@ -21,11 +21,16 @@ const SimpleComplete = () =>{
   const handleFetch = (query: string) => {
     return lakers.filter(name => name.includes(query))
   }
+  const renderOption = (item:string) =>{
+      return (
+          <h2>Name:{item}</h2>
+      )
+  }
 //   const handleFetch = (query: string) => {
 //     return lakersWithNumber.filter(player => player.value.includes(query))
 //   }
   return(
-      <AutoComplete fetchSuggestion={handleFetch} onSelect={action('selected')}>
+      <AutoComplete fetchSuggestion={handleFetch} onSelect={action('selected')} renderOptions={renderOption}>
       </AutoComplete>
   )
 }
