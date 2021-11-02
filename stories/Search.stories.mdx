@@ -1,0 +1,90 @@
+import { Meta, Story, Props ,Preview } from '@storybook/addon-docs/blocks';
+import Search from '../lib/components/Search/search';
+import SearchExample,{ToUseTemplete,AsyncTest} from './SearchExample.tsx'
+
+<Meta title='ENTRY|Search 搜索框' component={Search} />
+
+<br/>
+
+# Search 搜索框
+<br/>
+
+## 基本用法
+需要自行提供数据，以及对数据做出筛选的函数，当用户输入选中数据后可调用onSelect回调函数。
+
+此组件是在Input组件的基础上进行封装。
+
+```jsx
+//数据源 
+const data = ['uzi', 'deft', 'clearlove', 'doinb', 'rookie', 'knight', 'xiye', 'faker', 'teddy']
+
+//筛选函数，数据最终要写成对象数组形式，含有value属性
+const myfilter = (query: string) => {
+    return data.filter(name => name.includes(query)).map(v => ({ value: v }))
+}
+
+const SearchExample = () => {
+    return <Search prepend='Search' fetchSuggestion={myfilter}
+        onSelect={(item) => console.log(item)}
+    ></Search>
+}
+```
+<Preview>
+<Story name='Search'> 
+    <div style={{height:'300px'}}>
+       <SearchExample/>
+    </div>
+</Story>
+</Preview>
+
+## 自定义模板renderOption
+
+
+```jsx
+const ToUseTemplete=()=>{
+    return (
+    <Search renderOption={(item)=>(<h1>{item.value}</h1>)} fetchSuggestion={myfilter} prepend='Search'></Search>
+    )
+}
+```
+
+
+<Preview>
+<Story name='Search2'> 
+    <div style={{height:'300px'}}>
+       <ToUseTemplete/>
+    </div>
+</Story>
+</Preview>
+
+## 支持异步请求数据进行筛选，支持键盘事件（上下箭头回车ESC键）
+
+```jsx
+const asyncfilter:(query: string) => Promise<DataSourceType[]>=(query:string)=>{
+    return new Promise((res)=>{
+        setTimeout(() => {
+            res(data.filter(name=>name.includes(query)).map(v=>({value:v})))
+        }, 1000);
+    })
+}
+const AsyncTest=()=>{
+    return (
+        <Search renderFilter={asyncfilter} ></Search>
+    )
+}
+```
+
+<Preview>
+<Story name='Search async'> 
+    <div style={{height:'300px'}}>
+       <AsyncTest/>
+    </div>
+</Story>
+</Preview>
+
+
+<br/>
+
+## 属性详情 
+
+<Props of={Search} />

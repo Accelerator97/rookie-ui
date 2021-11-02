@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, FC } from 'react'
+import React, { InputHTMLAttributes, FC, ReactElement } from 'react'
 import classNames from 'classnames'
 import Icon from '../Icon/icon'
 import { ChangeEvent } from 'react-syntax-highlighter/node_modules/@types/react'
@@ -8,16 +8,13 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size
     disabled?: boolean;
     size?: InputSize;
     icon?: string
-    prepend?: string ; //前缀
-    append?: string ;//后缀
+    /**前缀 */
+    prepend?: string | ReactElement; 
+    /**后缀 */
+    append?: string | ReactElement;
+    /**受控组件的回调事件，用来取值 */
     onChange? : (e: ChangeEvent<HTMLInputElement>) => void;
 }
-/**
- * ~~~js
- * // 这样引用
- * import { Input } from 'rookie-ui'
- * ~~~
- */
 export const Input: FC<InputProps> = (props) => {
     const { disabled, size, icon, prepend, append, style, ...restProps } = props
     const classes = classNames('rookie-input-wrapper', {

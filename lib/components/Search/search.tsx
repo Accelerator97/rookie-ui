@@ -17,16 +17,9 @@ export interface SearchProps extends Omit<InputProps, 'onSelect'> {
     /**选中值之后执行的回调函数*/
     onSelect?: (item: DataSourceType) => void, 
     /**自定义下拉菜单的样式 */
-    renderOption?: (item: DataSourceType) => ReactElement //自定义展示模版
+    renderOption?: (item: DataSourceType) => ReactElement 
 }
-/**
- * ~~~js
- * //引用方式
- * import {Search} from 'rookie-ui'
- * 
- * //搜索的数据应当是对象数组形式，且含有value属性
- * ~~~
- */
+
 export const Search: FC<SearchProps> = (props) => {
     const { fetchSuggestion, onSelect, value, renderOption, ...restProps } = props
     const [inputValue, setInputValue] = useState(value as string)//用户输入的值
