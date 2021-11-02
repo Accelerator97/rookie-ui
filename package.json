@@ -64,6 +64,7 @@
   },
   "dependencies": {
     "@types/react-transition-group": "^4.4.4",
+    "axios": "^0.24.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-transition-group": "^4.4.2"
