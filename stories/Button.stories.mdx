@@ -1,0 +1,96 @@
+import { Meta, Story, Props ,Preview } from '@storybook/addon-docs/blocks';
+import  Button  from '../lib/components/Button/button';
+
+<Meta title='DISPLAY |Button 按钮' component={Button} />
+
+<br/>
+
+# Button 按钮
+<br/>
+
+
+
+## 按钮类型 btnType
+
+<Preview >
+  <Story name='default' >
+    <Button btnType='default' >default</Button>
+  </Story>
+  <Story name='primary'  >
+    <Button btnType='primary'>primary</Button>
+  </Story>
+  <Story name='danger'>
+    <Button btnType='danger'>danger</Button>
+  </Story>
+   <Story name='link'>
+    <Button btnType='link'>link</Button>
+  </Story>
+</Preview>
+
+
+  
+## 按钮大小 size
+
+
+<Preview>
+  <Story name='default-lg' >
+    <Button btnType='default' size='lg' >default</Button>
+  </Story>
+  <Story name='primary-lg' >
+    <Button btnType='primary' size='lg'>primary</Button>
+  </Story>
+  <Story name='danger-lg'>
+    <Button btnType='danger' size='lg'>danger</Button>
+  </Story>
+   <Story name='link-lg'>
+    <Button btnType='link' size='lg'>link</Button>
+  </Story>
+</Preview>
+
+
+<Preview>
+  <Story name='default-sm' >
+    <Button btnType='default' size='sm' >default</Button>
+  </Story>
+  <Story name='primary-sm' >
+    <Button btnType='primary' size='sm'>primary</Button>
+  </Story>
+  <Story name='danger-sm'>
+    <Button btnType='danger' size='sm'>danger</Button>
+  </Story>
+   <Story name='link-sm'>
+    <Button btnType='link' size='sm'>link</Button>
+  </Story>
+</Preview>
+
+
+
+
+### 禁用样式 disabled
+
+
+<Preview>
+  <Story name='defaultd' >
+    <Button btnType='default' disabled >default</Button>
+  </Story>
+  <Story name='primaryd' >
+    <Button btnType='primary' disabled>primary</Button>
+  </Story>
+  <Story name='dangerd'>
+    <Button btnType='danger' disabled>danger</Button>
+  </Story>
+   <Story name='linkd'>
+    <Button btnType='link' disabled>link</Button>
+  </Story>
+</Preview>
+
+
+
+  
+
+<br/>
+
+## 属性详情 
+
+<Props of={Button} />
+

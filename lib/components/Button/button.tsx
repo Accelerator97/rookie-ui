@@ -10,17 +10,13 @@ interface BaseButtonProps {
     size?: ButtonSize;
     btnType?: ButtonType;
     children: React.ReactNode;
+    /**链接按钮跳转地址 */
     href?: string
 }
 type NatvieButtonProps = ButtonHTMLAttributes<HTMLElement> & BaseButtonProps
 type AnchorButtonProps = AnchorHTMLAttributes<HTMLElement> & BaseButtonProps
 export type ButtonProps = Partial<NatvieButtonProps & AnchorButtonProps>
-/**
- * ~~~js
- * //引用方式
- * import {Button} from 'rookie-ui'
- * ~~~
- */
+
 export const Button: FC<ButtonProps> = (props) => {
     const { btnType, disabled, size, children, href ,className,...restprops} = props
     const classes = classNames('btn',className, {
