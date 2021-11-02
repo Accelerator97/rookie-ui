@@ -6,11 +6,13 @@ export type themeProps = 'primary' | 'secondary' | 'success' | 'info' | 'warning
 interface Iconprops extends React.SVGAttributes<SVGElement> {
     name: string,
     theme?:themeProps
+    loading?:boolean
 }
 
-const Icon: React.FunctionComponent<Iconprops> = ({ className, theme,name, ...restProps }) => {
+const Icon: React.FunctionComponent<Iconprops> = ({ className, theme,name,loading ,...restProps }) => {
     const classes = classNames('rookie-icon',className,{
-        [`icon-${theme}`]:theme
+        [`icon-${theme}`]:theme,
+        'is-loading':loading
     })
     return (
         <svg {...restProps} className={classes}>

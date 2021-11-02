@@ -6,6 +6,16 @@
     overflow: hidden;
 }
 
+@keyframes rotating {
+    from{transform:rotate(0)}
+    to{transform:rotate(360deg)}
+}
+    
+   
+.is-loading{
+    animation:rotating 1.2s linear infinite
+}
+
 @each $key,$val in $theme-colors {
     .icon-#{$key}{
         color: $val;
