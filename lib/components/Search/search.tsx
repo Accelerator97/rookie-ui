@@ -106,7 +106,7 @@ export const Search: FC<SearchProps> = (props) => {
     //产生下拉菜单
     const generateDropDown = () => {
         return (
-            <ul>
+            <ul className="rookie-suggestion-list">
                 {suggestions.map((item, index) => {
                     //用户选择的部分添加高亮样式
                     const classes = classNames('suggestion-item', {

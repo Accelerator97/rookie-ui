@@ -34,7 +34,7 @@ const SimpleSearch = () =>{
       return (
           <>
           <h2>Name:{itemWithGithub.value}</h2>
-          <p>Number:{itemWithGithub.url}</p>
+          <p>Url:{itemWithGithub.url}</p>
           </>
       )
   }
@@ -54,8 +54,4 @@ const handleFetch = (query: string) => {
 }
 
 storiesOf('Search Component', module)
-  .add('Search', SimpleSearch,{
-    info:{
-      source:true
-    }
-  })
+  .add('Search', SimpleSearch)
