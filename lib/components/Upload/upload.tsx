@@ -1,7 +1,7 @@
 import React, { FC, useRef, ChangeEvent, useState } from 'react'
 import Button from '../Button/button'
 import axios from 'axios'
-import  UploadList  from './uploadList'
+import UploadList from './uploadList'
 
 export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error'
 export interface UploadFile {
@@ -17,17 +17,38 @@ export interface UploadFile {
 export interface UploadProps {
     /**文件上传的接口 */
     action: string,
-    defaultFileList?:UploadFile[]
+    defaultFileList?: UploadFile[]
     beforeUpload?: (file: File) => boolean | Promise<File>,
     onProgress?: (percentage: number, file: File) => void,
     onSuccess?: (data: any, file: File) => void,
     onError?: (err: any, file: File) => void,
     onChange?: (file: File) => void
-    onRemove?:(file:UploadFile) => void
+    onRemove?: (file: UploadFile) => void,
+    header?: { [key: string]: any },
+    name?: string,
+    data?: { [key: string]: any };
+    withCredentials?: boolean,
+    accept?: string,
+    multiple?: boolean
 }
 
 export const Upload: FC<UploadProps> = (props) => {
-    const { action, defaultFileList,beforeUpload, onProgress, onSuccess, onError, onChange ,onRemove} = props
+    const {
+        action,
+        defaultFileList,
+        beforeUpload,
+        onProgress,
+        onSuccess,
+        onError,
+        onChange,
+        onRemove,
+        name,
+        header,
+        data,
+        withCredentials,
+        accept,
+        multiple
+    } = props
     const fileInput = useRef<HTMLInputElement>(null)//获取input节点
     const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList || [])
     const handleClick = () => {
@@ -79,25 +100,33 @@ export const Upload: FC<UploadProps> = (props) => {
             percentage: 0,
             raw: file
         }
-        setFileList([_file, ...fileList]) //当前的状态放在数组最前面
+        setFileList(prevList => {
+            return [_file, ...prevList]
+        }) //当前的状态放在数组最前面
         const formData = new FormData()
-        formData.append(file.name, file)
+        formData.append(name || 'file', file)
+        if (data) {
+            Object.keys(data).forEach(key => {
+                formData.append(key, data[key])
+            })
+        }
         axios.post(action, formData, {
             headers: {
+                ...header,
                 'Content-type': 'multipart/form-data'
             },
+            withCredentials,
             onUploadProgress: (e) => { //axios里面提供显示上传进度的api：onUploadProgress
-                let percentage = Math.round(e.loaded * 100 / e.total) || 0
-                if (percentage < 100) {
-                    updateFileList(_file,{percentage:percentage,status:'uploading'})
-                    if (onProgress) { //上传未完成调用onProgress函数
-                        onProgress(percentage, file)
-                    }
+                let percentage = Math.round((e.loaded * 100) / e.total) || 0;
+                updateFileList(_file, { percentage: percentage, status: 'uploading' })
+                console.log('uploading?', _file.status)
+                if (onProgress) { //上传未完成调用onProgress函数
+                    onProgress(percentage, file)
                 }
             }
         }).then(res => {
             console.log(res)
-            updateFileList(_file,{status:'success',response:res.data})
+            updateFileList(_file, { status: 'success', response: res.data })
             if (onSuccess) {
                 //服务器返回的res有很多属性，data才是我们要求的JSON数据
                 onSuccess(res.data, file)
@@ -107,7 +136,7 @@ export const Upload: FC<UploadProps> = (props) => {
             }
         }).catch(error => {
             console.log(error)
-            updateFileList(_file,{status:'error',error:error})
+            updateFileList(_file, { status: 'error', error: error })
             if (onError) {
                 onError(error, file)
             }
@@ -116,11 +145,11 @@ export const Upload: FC<UploadProps> = (props) => {
             }
         })
     }
-    const handleRemove = (file:UploadFile)=>{
-        setFileList((previousList)=>{
+    const handleRemove = (file: UploadFile) => {
+        setFileList((previousList) => {
             return previousList.filter(item => item.uid !== file.uid)
         })
-        if(onRemove){
+        if (onRemove) {
             onRemove(file)
         }
     }
@@ -133,10 +162,15 @@ export const Upload: FC<UploadProps> = (props) => {
                 type="file"
                 ref={fileInput}
                 onChange={handleFileChange}
+                accept={accept}
+                multiple={multiple}
             />
             <UploadList fileList={fileList} onRemove={handleRemove}></UploadList>
         </div>
     )
 }
 
+Upload.defaultProps = {
+    name: 'file'
+}
 export default Upload;

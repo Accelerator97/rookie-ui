@@ -27,7 +27,7 @@ export const UploadList: FC<UploadListProps> = props => {
                         <span className="file-actions">
                             <Icon name="cancel" onClick={()=>onRemove(item)}></Icon>
                         </span>
-                        {item.status === 'uploading' && <Progress percent={item.percentage || 0}></Progress>}
+                        {item.status === 'uploading' && <Progress percent={item.percentage || 0} />}
                     </li>
                 )
             })}

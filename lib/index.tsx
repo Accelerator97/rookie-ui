@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './styles/index.scss'
-import axios from 'axios'
 import Upload,{ UploadFile } from './components/Upload/upload'
 
 const defaultFileList: UploadFile[] = [
   { uid: '123', size: 1234, name: 'hello.md', status: 'uploading', percentage: 30 },
-  { uid: '122', size: 1234, name: 'xyz.md', status: 'success', percentage: 30 },
+  { uid: '122', size: 1234, name: 'xyz.md', status: 'uploading', percentage: 100 },
   { uid: '121', size: 1234, name: 'eyiha.md', status: 'error', percentage: 30 }
 ]
 const root = document.querySelector('#root')
@@ -23,7 +22,10 @@ const filePromise = (file:File) =>{
 }
 ReactDOM.render(
   <div>
-    <Upload action="https://jsonplaceholder.typicode.com/posts" 
+    <Upload action="https://getman.cn/echo" 
        defaultFileList={defaultFileList}
+       name="fileName"
+       data={{'key':'value'}}
+       header={{'x-ray':'hello'}}
     />
   </div>, root)
