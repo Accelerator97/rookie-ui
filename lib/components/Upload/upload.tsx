@@ -9,7 +9,7 @@ export interface UploadFile {
     size: number,
     name: string,
     status?: UploadFileStatus,
-    percentage?: number,
+    percentage: number,
     raw?: File,
     response?: any,
     error?: any
@@ -17,18 +17,31 @@ export interface UploadFile {
 export interface UploadProps {
     /**文件上传的接口 */
     action: string,
+    /**默认展示上传文件及上传进度 */
     defaultFileList?: UploadFile[]
+    /** 上传文件前的回调函数，可以用来检测文件大小以及上传文件名修改等*/
     beforeUpload?: (file: File) => boolean | Promise<File>,
+    /**文件上传时的回调函数 */
     onProgress?: (percentage: number, file: File) => void,
+    /**文件上传成功时的回调函数 */
     onSuccess?: (data: any, file: File) => void,
+    /**文件上传失败时的回调函数 */
     onError?: (err: any, file: File) => void,
+    /**文件上传状态改变时（上传中/上传成功/上传失败）的回调函数 */
     onChange?: (file: File) => void
+    /**移除已上传或上传中的文件的回调函数 */
     onRemove?: (file: UploadFile) => void,
+    /**设置请求头 */
     header?: { [key: string]: any },
+    /**上传给服务器的文件名 */
     name?: string,
+    /**上传数据 */
     data?: { [key: string]: any };
+    /**是否携带cookie */
     withCredentials?: boolean,
+    /**限制上传文件格式 */
     accept?: string,
+    /**支持多文件上传 */
     multiple?: boolean
 }
 

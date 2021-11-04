@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './styles/index.scss'
-// import Upload,{ UploadFile } from './components/Upload/upload'
+import Upload,{ UploadFile } from './components/Upload/upload'
 import Progress from '../lib/components/Progress/progress'
 
 // const defaultFileList: UploadFile[] = [
@@ -26,5 +26,5 @@ const root = document.querySelector('#root')
 
 ReactDOM.render(
   <div>
-    <Progress showText circle percent={40}/>
+    <Upload action="https://getman.cn/echo" ></Upload>
   </div>, root)
