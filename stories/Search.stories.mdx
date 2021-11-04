@@ -69,7 +69,7 @@ const asyncfilter:(query: string) => Promise<DataSourceType[]>=(query:string)=>{
 }
 const AsyncTest=()=>{
     return (
-        <Search renderFilter={asyncfilter} ></Search>
+        <Search fetchSuggestion={asyncfilter} ></Search>
     )
 }
 ```
