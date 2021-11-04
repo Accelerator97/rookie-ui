@@ -15,6 +15,8 @@ export interface UploadFile {
     error?: any
 }
 export interface UploadProps {
+    /**上传按钮显示的文字 */
+    text?:string,
     /**文件上传的接口 */
     action: string,
     /**默认展示上传文件及上传进度 */
@@ -47,6 +49,7 @@ export interface UploadProps {
 
 export const Upload: FC<UploadProps> = (props) => {
     const {
+        text,
         action,
         defaultFileList,
         beforeUpload,
@@ -168,7 +171,7 @@ export const Upload: FC<UploadProps> = (props) => {
     }
     return (
         <div className="rookie-upload-component">
-            <Button btnType="primary" onClick={handleClick}>上传文件</Button>
+            <Button btnType="primary" onClick={handleClick}>{text}</Button>
             <input
                 className="rookie-file-input"
                 style={{ display: 'none' }}
@@ -184,6 +187,7 @@ export const Upload: FC<UploadProps> = (props) => {
 }
 
 Upload.defaultProps = {
-    name: 'file'
+    name: 'file',
+    text:'上传文件'
 }
 export default Upload;

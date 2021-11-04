@@ -3,13 +3,13 @@ import './importAll.js' //引入全部Icon图标
 import classNames from 'classnames'
 
 export type themeProps = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' |'light' |'dark'
-interface Iconprops extends React.SVGAttributes<SVGElement> {
+export interface Iconprops extends React.SVGAttributes<SVGElement> {
     name: string,
     theme?:themeProps
     loading?:boolean
 }
 
-const Icon: React.FunctionComponent<Iconprops> = ({ className, theme,name,loading ,...restProps }) => {
+export const Icon: React.FunctionComponent<Iconprops> = ({ className, theme,name,loading ,...restProps }) => {
     const classes = classNames('rookie-icon',className,{
         [`icon-${theme}`]:theme,
         'is-loading':loading
@@ -21,4 +21,4 @@ const Icon: React.FunctionComponent<Iconprops> = ({ className, theme,name,loadin
     )
 }
 
-export default Icon
+export default Icon;

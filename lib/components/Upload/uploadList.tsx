@@ -23,7 +23,7 @@ export const UploadList: FC<UploadListProps> = props => {
                             {(item.status === 'uploading' || item.status === 'ready') && <Icon name="loading" loading theme="primary" />}
                             {item.status === 'success' && <Icon name="right" theme="success" />}
                             {item.status === 'error' && <Icon name="false" theme="danger" />}
-                        </span>
+                        </span> 
                         <span className="file-actions">
                             <Icon name="cancel" onClick={()=>onRemove(item)}></Icon>
                         </span>
