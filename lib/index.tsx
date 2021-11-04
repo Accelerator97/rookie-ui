@@ -1,30 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './styles/index.scss'
-import Upload,{ UploadFile } from './components/Upload/upload'
-import Progress from '../lib/components/Progress/progress'
+export {default as Button} from './components/Button/button'
+export {default as Icon} from './components/Icon/icon'
+export {default as Input} from './components/Input/input'
+export {default as Menu} from './components/Menu/menu'
+export {default as MenuItem} from './components/Menu/menuItem'
+export {default as SubMenu} from './components/Menu/subMenu'
+export {default as Progress} from './components/Progress/progress'
+export {default as Search} from './components/Search/search'
+export {default as Transition}  from './components/Transition/transition'
+export {default as Upload} from './components/Upload/upload'
+export {default as UploadList} from './components/Upload/uploadList'
 
-// const defaultFileList: UploadFile[] = [
-//   { uid: '123', size: 1234, name: 'hello.md', status: 'uploading', percentage: 30 },
-//   { uid: '122', size: 1234, name: 'xyz.md', status: 'uploading', percentage: 100 },
-//   { uid: '121', size: 1234, name: 'eyiha.md', status: 'error', percentage: 30 }
-// ]
-const root = document.querySelector('#root')
-// const checkFileSize =(file:File) =>{
-//   if(Math.round(file.size/1024) > 50) {
-//     alert('file too big')
-//     return false
-//   }
-//   return true
-// }
-// const filePromise = (file:File) =>{
-//   const newFile = new File([file],'new_name.md',{type:file.type})
-//   return Promise.resolve(newFile)
-// }
-
-
-
-ReactDOM.render(
-  <div>
-    <Upload action="https://getman.cn/echo" ></Upload>
-  </div>, root)

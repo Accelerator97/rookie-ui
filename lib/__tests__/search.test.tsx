@@ -73,13 +73,5 @@ describe('test AutoComplete component', () => {
         fireEvent.click(document) //点击组件外的内容
         expect(wrapper.queryByText('ab')).not.toBeInTheDocument()
     })
-    it('renderOption should generate the right template', () => {
-
-    })
-    it('async fetchSuggestions should works fine', () => {
-
-    })
-
-
 })
 
