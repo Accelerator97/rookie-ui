@@ -21,7 +21,10 @@ const root = document.querySelector('#root')
 //   const newFile = new File([file],'new_name.md',{type:file.type})
 //   return Promise.resolve(newFile)
 // }
+
+
+
 ReactDOM.render(
   <div>
-    <Progress   percent={100}/>
+    <Progress showText  percent={50}/>
   </div>, root)
