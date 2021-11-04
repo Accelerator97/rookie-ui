@@ -9,7 +9,7 @@
     "clean":"rimraf ./dist",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
     "build-ts": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "build-css": "sass ./lib/styles/index.scss ./dist/index.scss",
+    "build-css": "dart-sass ./lib/styles/index.scss ./dist/lib/index.scss",
     "storybook": "start-storybook -p 9009 -s public --docs",
     "build-storybook": "build-storybook --no-dll --quiet --docs",
     "build":"yarn clean && yarn build-ts && yarn build-css"

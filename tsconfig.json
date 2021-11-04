@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "declaration": true,
+    "declaration": true, //给JS文件添加d.ts说明文件
     "baseUrl": ".",
     "module": "esnext",
     "target": "es5",
