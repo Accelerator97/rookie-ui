@@ -6,10 +6,13 @@
   "types": "dist/lib/index",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --config=jest.config.js --runInBand",
+    "clean":"rimraf ./dist",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build-ts": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build-css": "sass ./lib/styles/index.scss ./dist/index.scss",
     "storybook": "start-storybook -p 9009 -s public --docs",
-    "build-storybook": "build-storybook --no-dll --quiet --docs"
+    "build-storybook": "build-storybook --no-dll --quiet --docs",
+    "build":"yarn clean && yarn build-ts && yarn build-css"
   },
   "repository": {
     "type": "git",
@@ -52,6 +55,7 @@
     "node-sass": "npm:dart-sass",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-test-renderer": "^16.8.4",
+    "rimraf": "^3.0.2",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
     "svg-sprite-loader": "4.1.3",

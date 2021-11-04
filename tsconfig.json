@@ -44,6 +44,7 @@
     "jest",
     "src/setupTests.ts",
     "*.js",
-    "lib/**/*.test.tsx"
+    "lib/**/*.test.tsx",
+    "stories"
   ],
 }
