@@ -43,6 +43,7 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
-    "*.js"
+    "*.js",
+    "lib/**/*.test.tsx"
   ],
 }
