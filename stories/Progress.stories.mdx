@@ -1,0 +1,76 @@
+import { Meta, Story, Props ,Preview } from '@storybook/addon-docs/blocks';
+import  Progress  from '../lib/components/Progress/progress';
+import {ProgressExample,Progresscircle}from './ProgressExample.tsx';
+
+<Meta title='REACTION |Progress 进度条' component={Progress} />
+
+<br/>
+
+# Progress 进度条
+<br/>
+
+## 条形进度条
+
+```jsx
+function ProgressExample() {
+    const [count, setCount] = useState(30);
+    const handleClick1 = ()=>{
+        setCount(precount=>{ return precount + 10})
+    }
+    const handleClick2 = ()=>{
+        setCount((precount)=>{ return precount - 10})
+    }
+    return (
+        <div>
+            <Button onClick={handleClick1}>+10</Button>
+            <Button onClick={handleClick2}>-10</Button>
+            <Progress percent={count} ></Progress>
+        </div>
+    );
+}
+```
+
+<Preview>
+    <Story name='progress dynamic'>
+        <ProgressExample />
+    </Story>
+</Preview>
+
+## 环形进度条
+
+```jsx
+function Progresscircle() {
+    const [count, setCount] = useState(30);
+    const handleClick1 = ()=>{
+        setCount(precount=>{ return precount + 10})
+    }
+    const handleClick2 = ()=>{
+        setCount((precount)=>{ return precount - 10})
+    }
+    return (
+        <div>
+            <Button onClick={handleClick1}>+10</Button>
+            <Button onClick={handleClick2}>-10</Button>
+            <Progress percent={count} circle  size={100}></Progress>
+        </div>
+    );
+}
+```
+
+
+<Preview>
+    <Story name='progresscircle'>
+        <Progresscircle></Progresscircle>
+    </Story>
+</Preview>
+
+
+
+## 属性详情
+
+<Props of={Progress} />
+
+
+
+
+

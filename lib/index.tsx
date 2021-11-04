@@ -26,5 +26,5 @@ const root = document.querySelector('#root')
 
 ReactDOM.render(
   <div>
-    <Progress showText  percent={50}/>
+    <Progress showText circle percent={40}/>
   </div>, root)
